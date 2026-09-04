@@ -27,17 +27,17 @@ class Particle {
     this.startX = this.x;
 
     this.size = 0.1;
-    this.maxSize = 20;
+    this.maxSize = 50;
 
     this.speedY = Math.random() * 2 + 3;
 
-    this.growthSpeed = 0.1;
+    this.growthSpeed = 1;
 
     this.angle = Math.random() * Math.PI * 2;
     this.swingSpeed = Math.random() * 0.03 + 0.01;
     this.swingAmount = Math.random() * 2 + 1;
 
-    this.color = "#ffffff";
+    this.color = "#000000";
   }
 
   update() {

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #111111;
+  background-color: #aaaaaa;
   height: 100vh;
   position: relative;
   overflow: hidden;
@@ -32,11 +32,54 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #aaaaaa;
+  background-color: transparent;
   z-index: -1;
 }
 
 
+
+/* Halftone thing (from css-irl) */
+
+.halftone {
+  --mask: linear-gradient(
+    to top,
+    rgb(0 0 0),
+    rgb(0 0 0 / 0.001)
+  );
+
+  --stop1: 0.001rem;
+  --stop2: 0.75rem;
+  --dotColor: #000000;
+  --dottedBackground: radial-gradient(
+    circle at center,
+    var(--dotColor) var(--stop1),
+    transparent var(--stop2)
+  );
+
+  position: absolute;
+  padding-top: 10rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  filter: contrast(50);
+  mix-blend-mode: multiply;
+  isolation: isolate;
+  z-index: -2;
+}
+
+
+.halftone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--dottedBackground);
+  background-size: 0.5rem 0.5rem;
+  background-repeat: round;
+  mask-image: var(--mask);
+  -webkit-mask-image: var(--mask);
+}
 
 
 
