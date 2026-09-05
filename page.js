@@ -22,16 +22,16 @@ const particles = [];
 class Particle {
   constructor () {
     this.x = Math.random() * canvas.width;
-    this.y = canvas.height;
+    this.y = 0;
 
     this.startX = this.x;
 
     this.size = 0.1;
-    this.maxSize = 50;
+    this.maxSize = 10;
 
     this.speedY = Math.random() * 2 + 3;
 
-    this.growthSpeed = 1;
+    this.growthSpeed = 0.75;
 
     this.angle = Math.random() * Math.PI * 2;
     this.swingSpeed = Math.random() * 0.03 + 0.01;
@@ -41,7 +41,7 @@ class Particle {
   }
 
   update() {
-    this.y -= this.speedY;
+    this.y += this.speedY;
 
     this.size += this.growthSpeed;
 
@@ -68,7 +68,7 @@ class Particle {
   isDead() {
 
     return (
-      this.y < -this.size ||
+      this.y > canvas.height + this.size ||
       this.x < -this.size ||
       this.x > canvas.width + this.size
     );
@@ -79,7 +79,7 @@ class Particle {
 
 
 function createParticles() {
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < 5; i++) {
     particles.push(
         new Particle()
     );
